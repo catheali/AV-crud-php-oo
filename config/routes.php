@@ -23,7 +23,7 @@ $rotas = [
     '/alunos/novo' => criarRota(AlunoController::class, 'novo'),
     '/alunos/editar' => criarRota(AlunoController::class, 'editar'),
     '/alunos/excluir' => criarRota(AlunoController::class, 'excluir'),
-    '/alunos/relatorio' => criarRota(AlunoController::class, 'gerandopdf'),
+    '/alunos/gerandopdf' => criarRota(AlunoController::class, 'gerandoPDF'),
 
     '/usuarios/listar' => criarRota(UserController::class, 'list'),
     '/usuarios/novo' => criarRota(UserController::class, 'add'),
@@ -35,21 +35,21 @@ $rotas = [
     '/cursos/novo' => criarRota(CursoController::class, 'novo'),
     '/cursos/editar' => criarRota(CursoController::class, 'editar'),
     '/cursos/excluir' => criarRota(CursoController::class, 'excluir'),
-    '/cursos/relatorio' => criarRota(CursoController::class, 'relatorio'),
+    '/cursos/gerandopdf' => criarRota(CursoController::class, 'relatorio'),
 
 
     '/categorias/listar' => criarRota(CategoriaController::class, 'listar'),
     '/categorias/novo' => criarRota(CategoriaController::class, 'novo'),
     '/categorias/editar' => criarRota(CategoriaController::class, 'editar'),
     '/categorias/excluir' => criarRota(CategoriaController::class, 'excluir'),
-    '/categorias/relatorio' => criarRota(CategoriaController::class, 'relatorio'),
+    '/categorias/gerandopdf' => criarRota(CategoriaController::class, 'relatorio'),
 
 
     '/professores/listar' => criarRota(ProfessorController::class, 'listar'),
     '/professores/novo' => criarRota(ProfessorController::class, 'novo'),
     '/professores/editar' => criarRota(ProfessorController::class, 'editar'),
     '/professores/excluir' => criarRota(ProfessorController::class, 'excluir'),
-    '/professores/relatorio' => criarRota(ProfessorController::class, 'relatorio'),
+    '/professores/gerandopdf' => criarRota(ProfessorController::class, 'relatorio'),
 
 ];
 

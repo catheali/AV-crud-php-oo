@@ -102,7 +102,7 @@ class AlunoController extends AbstractController
 
     }
 
-    public function gerandopdf():void
+    public function gerandoPDF():void
      {
         $dados = $this->repository->buscarTodos();
         $this->relatorio("aluno", [
