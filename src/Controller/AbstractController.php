@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 use App\Security\UserSecurity;
 
 abstract class AbstractController
@@ -28,10 +31,25 @@ abstract class AbstractController
         header('location: '. $local);
     }
 
-    public function checkLogin()
+     public function checkLogin()
+     {
+         if(UserSecurity::isLogged() === false){
+             $this->redirect('/login');
+         }
+     }
+
+     public function relatorio( string $onde, array $dados = [] ):void
     {
-        if(UserSecurity::isLogged() === false){
-            $this->redirect('/login');
-        }
+        extract($dados);
+        ob_start();
+        include_once ("../Views/{$onde}/relatorio.phtml");
+        $pdf = ob_get_clean();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $dompdf = new Dompdf($options);
+         $dompdf->loadHtml($pdf); // carrega o conteudo do PDF
+         $dompdf->setPaper('A4', 'portrait'); //tamanho da pagina
+         $dompdf->render(); //aqui renderiza
+         $dompdf->stream('relatorio.pdf', ['Attachment'=> 0,]); //  é aqui que gera o pdf        
     }
 }

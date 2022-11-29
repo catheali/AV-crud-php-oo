@@ -22,21 +22,21 @@ class CursoController extends AbstractController
     public function listar(): void
     {
         $this->checkLogin();
-        $rep = new CursoRepository();
-        $cursos = $rep->buscarTodos();
+        
+        $cursos = $this->repository->buscarTodos();
 
         $this->render("curso/listar", [
             'cursos' => $cursos,
         ]);
     }
 
-    public function cadastrar(): void
+    public function novo(): void
     {
         
         $rep = new CategoriaRepository();
         if (true === empty($_POST)) {
             $categorias = $rep->buscarTodos();
-            $this->render("/curso/cadastrar", ['categorias' => $categorias]);
+            $this->render("curso/novo", ['categorias' => $categorias]);
             return;
         }
 
@@ -47,19 +47,7 @@ class CursoController extends AbstractController
         $curso->categoria_id = intval($_POST['categoria']);
 
         $this->repository->inserir($curso);
-        // try {
-        // } catch (Exception $exception) {
-        //     var_dump($exception->getMessage());
-        //     // if (true === str_contains($exception->getMessage(), 'cpf')) {
-        //     //     die('CPF ja existe');
-        //     // }
-
-        //     // if (true === str_contains($exception->getMessage(), 'email')) {
-        //     //     die('Email ja existe');
-        //     // }
-
-        //     die('Vish, aconteceu um erro');
-        // }
+ 
 
         $this->redirect('/cursos/listar');
     }
@@ -75,7 +63,7 @@ class CursoController extends AbstractController
         $rep = new CategoriaRepository();
         $categorias = $rep->buscarTodos();
         $curso = $this->repository->buscarUm($id);
-        $this->render("/curso/editar", [
+        $this->render("curso/editar", [
             'categorias' => $categorias,
             'curso' => $curso
         ]);

@@ -1,0 +1,23 @@
+<?php 
+$professor = $dados[0];
+?>
+<section class="mt-3 card card-body">
+    <h1> Editar Professor </h1>
+    <div class="row">
+       <div class="col">
+       <form action="" method="POST" >
+             <label for="nome"> Nome : </label>
+            <input name="nome" type="text" id="nome" class="form-control mb-3" value="<?php echo $professor->nome ?? $_POST["nome"] ; ?>">
+            <label for="cpf" > CPF : </label>
+            <input name="cpf" type="text" id="cpf" class="form-control mb-3" value="<?php echo $professor->cpf ?? $_POST["cpf"] ; ?>">
+            <label for="formacao"> Formacao :</label>
+            <input name="formacao" type="text" id="formacao" class="form-control mb-3" value="<?php echo $professor->formacao ?? $_POST["formacao"] ; ?>"> 
+            <label for="endereco"> Endereço :</label>
+            <input name="endereco" type="text" id="endereco" class="form-control mb-3" value="<?php echo $professor->endereco ?? $_POST["endereco"] ; ?>">
+            <button  type="submit"   class="btn btn-primary"> Enviar</button>
+         </form>
+       </div>
+        <div class="col">
+        </div>
+    </div>
+</section>

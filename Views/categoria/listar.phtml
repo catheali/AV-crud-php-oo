@@ -1,0 +1,53 @@
+<section class="mt-3 card card-body">
+    <h1>Gerenciar Categorias</h1>
+    <div class="mt-2 text-end">
+         <a href="/categorias/gerandopdf" class="btn btn-outline-primary">Gerar PDF</a>
+
+        <a href="/categorias/novo" class="btn btn-outline-dark">Novo Categoria</a>
+    </div>
+    <table class="table table-striped table-hover mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>#ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach($categorias ?? [] as $categoria){
+                    $id = $categoria->id;
+                    echo"
+                    <tr>
+                        <td>{$id}</td>
+                        <td>{$categoria->nome}</td>
+                        <td>
+                            <a href='/categorias/editar?id={$id}' class='btn btn-outline-warning'>Editar</a>
+                            <button type='button' class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#modalexcluir' onclick='pegarID({$categoria->id})'>Excluir</button>
+                        </td>
+                    </tr>
+                    ";
+                }
+            
+            ?>
+        </tbody>
+    </table>
+</section>
+<div class='modal fade' id='modalexcluir' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h1 class='modal-title fs-5' id='exampleModalLabel'>Apagar Categoria</h1>
+                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+            </div>
+            <div class='modal-body'>
+                Deseja apagar essa categoria?
+                <input type="hidden" id="idatual">
+            </div>
+            <div class='modal-footer'>
+                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancelar</button>
+                <button type='button' onclick="confirmar(<?php echo $id; ?>, 'categoria')" class='btn btn-danger'>Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>

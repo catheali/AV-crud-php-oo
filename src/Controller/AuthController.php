@@ -16,7 +16,7 @@ class AuthController extends AbstractController
         $this->userRepository = new UserRepository();
     }
 
-    public function login(): void
+   public function login(): void
     {
         if (false === empty($_POST)) {
             $email = $_POST['email'];
@@ -38,9 +38,7 @@ class AuthController extends AbstractController
 
             return;
         }
-
-        // $this->render('auth/login', [], false);
-        $this->render('auth/login', navbar: false); // apenas a partir do PHP8
+        $this->render('auth/login', navbar: false);
     }
 
     public function logout(): void

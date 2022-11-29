@@ -3,6 +3,7 @@
 use App\Controller\AlunoController;
 use App\Controller\AuthController;
 use App\Controller\CursoController;
+use App\Controller\CategoriaController;
 use App\Controller\ProfessorController;
 use App\Controller\SiteController;
 use App\Controller\UserController;
@@ -19,10 +20,10 @@ $rotas = [
     '/' => criarRota(SiteController::class, 'inicio'),
     
     '/alunos/listar' => criarRota(AlunoController::class, 'listar'),
-    '/alunos/novo' => criarRota(AlunoController::class, 'cadastrar'),
+    '/alunos/novo' => criarRota(AlunoController::class, 'novo'),
     '/alunos/editar' => criarRota(AlunoController::class, 'editar'),
     '/alunos/excluir' => criarRota(AlunoController::class, 'excluir'),
-    '/alunos/relatorio' => criarRota(AlunoController::class, 'relatorio'),
+    '/alunos/relatorio' => criarRota(AlunoController::class, 'gerandopdf'),
 
     '/usuarios/listar' => criarRota(UserController::class, 'list'),
     '/usuarios/novo' => criarRota(UserController::class, 'add'),
@@ -31,14 +32,25 @@ $rotas = [
     '/desconectar' => criarRota(AuthController::class, 'logout'),
 
     '/cursos/listar' => criarRota(CursoController::class, 'listar'),
-    '/cursos/novo' => criarRota(CursoController::class, 'cadastrar'),
+    '/cursos/novo' => criarRota(CursoController::class, 'novo'),
     '/cursos/editar' => criarRota(CursoController::class, 'editar'),
     '/cursos/excluir' => criarRota(CursoController::class, 'excluir'),
+    '/cursos/relatorio' => criarRota(CursoController::class, 'relatorio'),
+
+
+    '/categorias/listar' => criarRota(CategoriaController::class, 'listar'),
+    '/categorias/novo' => criarRota(CategoriaController::class, 'novo'),
+    '/categorias/editar' => criarRota(CategoriaController::class, 'editar'),
+    '/categorias/excluir' => criarRota(CategoriaController::class, 'excluir'),
+    '/categorias/relatorio' => criarRota(CategoriaController::class, 'relatorio'),
+
 
     '/professores/listar' => criarRota(ProfessorController::class, 'listar'),
-    '/professores/novo' => criarRota(ProfessorController::class, 'cadastrar'),
+    '/professores/novo' => criarRota(ProfessorController::class, 'novo'),
     '/professores/editar' => criarRota(ProfessorController::class, 'editar'),
     '/professores/excluir' => criarRota(ProfessorController::class, 'excluir'),
+    '/professores/relatorio' => criarRota(ProfessorController::class, 'relatorio'),
+
 ];
 
 return $rotas;

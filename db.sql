@@ -47,6 +47,12 @@ VALUES
 ('Allan','Rua idelfonso albano 222, ap 1403', 'SABE TUDO, BRABISSIMO', true, '99999999999'),
 ('Gleidson', 'Rua oscar frança 88', 'Formado nas ruas', true, '22222222222');
 
+
+CREATE TABLE tb_categorias (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE tb_cursos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
@@ -57,10 +63,7 @@ CREATE TABLE tb_cursos (
     FOREIGN KEY (categoria_id) REFERENCES tb_categorias(id)
 );
 
-CREATE TABLE tb_categorias (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL
-);
+
 
 INSERT INTO tb_categorias (nome) 
 VALUES 
