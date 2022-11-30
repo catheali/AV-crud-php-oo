@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Model\Aluno;
+use App\Notification\WebNotification;
 use App\Repository\AlunoRepository;
-use App\Security\UserSecurity;
-use Dompdf\Dompdf;
+
 use Exception;
 
 class AlunoController extends AbstractController
@@ -48,16 +48,21 @@ class AlunoController extends AbstractController
             $this->repository->inserir($aluno);
         } catch (Exception $exception) {
             if (true === str_contains($exception->getMessage(), 'cpf')) {
-                die('CPF ja existe');
+                WebNotification::add('CPF ja existe', 'danger');
+                $this->redirect('/alunos/novo');
+                return;
             }
 
             if (true === str_contains($exception->getMessage(), 'email')) {
-                die('Email ja existe');
+                WebNotification::add('Email ja existe', 'danger');
+                $this->redirect('/alunos/novo');
+                return;
             }
 
             die('Vish, aconteceu um erro');
         }
 
+        WebNotification::add('Aluno adicionado', 'success');
         $this->redirect('/alunos/listar');
     }
 
@@ -79,15 +84,21 @@ class AlunoController extends AbstractController
                 $rep->atualizar($aluno, $id);
             } catch (Exception $exception) {
                 if (true === str_contains($exception->getMessage(), 'cpf')) {
-                    die('CPF ja existe');
+                    WebNotification::add('CPF ja existe', 'danger');
+                $this->redirect('/alunos/editar');
+                return;
                 }
     
                 if (true === str_contains($exception->getMessage(), 'email')) {
-                    die('Email ja existe');
+                    WebNotification::add('Email ja existe', 'danger');
+                    $this->redirect('/alunos/editar');
+                    return;
                 }
     
                 die('Vish, aconteceu um erro');
             }
+            WebNotification::add('Aluno Editado', 'success');
+
             $this->redirect('/alunos/listar');
         }
     }
@@ -97,7 +108,8 @@ class AlunoController extends AbstractController
         $id = $_GET['id'];
 
         $this->repository->excluir($id);
-        
+        WebNotification::add('Aluno excluido com sucesso', 'sucess');
+
         $this->redirect('/alunos/listar');
 
     }

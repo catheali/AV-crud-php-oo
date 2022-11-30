@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 use App\Model\Categoria;
+use Exception;
 use App\Repository\CategoriaRepository;
 
 class CategoriaController extends AbstractController

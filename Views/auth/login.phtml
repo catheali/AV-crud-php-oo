@@ -1,6 +1,9 @@
 <section class="row mt-5">
     <div class="col-md-4 offset-md-4">
-        <div class="card card-body">
+    
+    <?php App\Notification\WebNotification::show(); ?>
+    
+    <div class="card card-body">
             <form action="" method="post">
                 <input name="email" type="email" placeholder="Email" class="form-control form-control-lg mb-3">
 
