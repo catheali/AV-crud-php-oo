@@ -45,4 +45,12 @@ class UserController extends AbstractController
 
         $this->redirect('/usuarios/listar');
     }
+
+    public function gerandoPDF():void
+    {
+       $dados = $this->repository->findAll();
+       $this->relatorio("user", [
+           'users' => $dados,
+       ]);
+    }
 }

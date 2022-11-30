@@ -59,7 +59,7 @@ Aplicação Web do tipo monolitica, criada com:
 
   Certifique-se que as tabelas foram criadas, executando o comando:
   ```sql
-  SHOW TABLES;
+   SHOW TABLES;
   ```
   Se o resultado for a lista de tabelas existentes, então pronto! 
 
