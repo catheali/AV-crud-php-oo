@@ -31,7 +31,7 @@ class UserRepository
 
     public function findAll(): iterable
     {
-        $sql = 'SELECT * FROM '.self::TABLE;
+        $sql = 'SELECT id, name, email, profile, profile FROM '.self::TABLE;
 
         $query = $this->pdo->query($sql);
 
