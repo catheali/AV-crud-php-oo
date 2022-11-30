@@ -58,7 +58,7 @@ Aplicação Web do tipo monolitica, criada com:
   Ainda dentro do cliente de banco de dados, copie e cole o conteudo do arquivo **db.sql** e execute.
 
   Certifique-se que as tabelas foram criadas, executando o comando:
-  ``` sql
+  ```sql
   SHOW TABLES;
   ```
   Se o resultado for a lista de tabelas existentes, então pronto! 
