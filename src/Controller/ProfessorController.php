@@ -92,7 +92,7 @@ class ProfessorController extends AbstractController
     {
        $dados = $this->repository->buscarTodos();
        $this->relatorio("professor", [
-        'professor' => $dados,
+        'professores' => $dados,
     ] );
     }
 

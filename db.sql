@@ -57,7 +57,7 @@ CREATE TABLE tb_cursos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     cargaHoraria VARCHAR(50) NOT NULL,
-    descricao VARCHAR(100) UNIQUE NOT NULL,
+    descricao VARCHAR(100)  NOT NULL,
     status TINYINT NOT NULL,
     categoria_id INT NOT NULL,
     FOREIGN KEY (categoria_id) REFERENCES tb_categorias(id)

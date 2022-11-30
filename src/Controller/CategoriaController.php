@@ -50,7 +50,7 @@ class CategoriaController extends AbstractController
         $id = $_GET['id'];
         $categoria = $this->repository->buscarUm($id);
         $this->render("categoria/editar", [
-            'categorias' => $categorias]);
+            'categoria' => $categoria]);
        
         if (false === empty($_POST)) {
             $categoria->nome = $_POST['nome'];
@@ -66,5 +66,13 @@ class CategoriaController extends AbstractController
             }
             $this->redirect('/categorias/listar');
         }
+    }
+
+    public function gerandoPDF():void
+    {
+       $dados = $this->repository->buscarTodos();
+       $this->relatorio("categoria", [
+           'categorias' => $dados,
+       ]);
     }
 }

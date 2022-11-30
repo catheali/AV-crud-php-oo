@@ -23,8 +23,8 @@
                         <td>{$categoria->nome}</td>
                         <td>
                             <a href='/categorias/editar?id={$id}' class='btn btn-outline-warning'>Editar</a>
-                            <button type='button' class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#modalexcluir' onclick='pegarID({$categoria->id})'>Excluir</button>
-                        </td>
+                            <button type='button' class='btn btn-outline-danger btn-sm' data-bs-toggle='modal' data-bs-target='#exampleModal'> Excluir</button>
+                            </td>
                     </tr>
                     ";
                 }
@@ -46,7 +46,7 @@
             </div>
             <div class='modal-footer'>
                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancelar</button>
-                <button type='button' onclick="confirmar(<?php echo $id; ?>, 'categoria')" class='btn btn-danger'>Confirmar</button>
+                <button type='button' onclick="confirmar(<?php echo $id; ?>, 'categoria')" class='btn btn-danger'>Sim, exclua.</button>
             </div>
         </div>
     </div>

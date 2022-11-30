@@ -1,15 +1,10 @@
-<?php
- $categorias = $dados[0];
- var_dump($dados);
-?>
-
 <section class="mt-3 card card-body">
     <h1>Editar Categoria</h1>
     <div class="row">
         <div class="col">
             <form action="#" method="POST">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" class="form-control mb-3" value="<?php echo $dados[0]->nome; ?>">
+                <input type="text" name="nome" id="nome" class="form-control mb-3" value="<?php echo $categoria->nome; ?>">
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
         </div>

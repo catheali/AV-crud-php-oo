@@ -32,7 +32,6 @@ class CursoController extends AbstractController
 
     public function novo(): void
     {
-        
         $rep = new CategoriaRepository();
         if (true === empty($_POST)) {
             $categorias = $rep->buscarTodos();
@@ -46,15 +45,29 @@ class CursoController extends AbstractController
         $curso->cargaHoraria = intval($_POST['cargaHoraria']);
         $curso->categoria_id = intval($_POST['categoria']);
 
-        $this->repository->inserir($curso);
- 
+       
+    try { $this->repository->inserir($curso);
+         } catch (Exception $exception) {
+             var_dump($exception->getMessage());
+         if (true === str_contains($exception->getMessage(), 'descricao')) {
+             die('Descrição ja existe');
+         }
+
+         if (true === str_contains($exception->getMessage(), 'nome')) {
+             die('Curso ja existe');
+         }
+
+         die('Vish, aconteceu um erro');
+        }
 
         $this->redirect('/cursos/listar');
     }
 
     public function excluir(): void
     {
-        echo "Pagina de excluir";
+        $id = $_GET['id'];
+        $this->repository->excluir($id);
+        $this->redirect('/cursos/listar');
     }
 
     public function editar(): void
@@ -76,5 +89,13 @@ class CursoController extends AbstractController
             $this->repository->atualizar($curso, $id);
             $this->redirect('/cursos/listar');
         }
+    }
+
+    public function gerandoPDF():void
+    {
+       $dados = $this->repository->buscarTodos();
+       $this->relatorio("curso", [
+           'cursos' => $dados,
+       ]);
     }
 }

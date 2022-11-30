@@ -53,12 +53,12 @@ class CategoriaRepository implements RepositoryInterface
 
     public function atualizar(object $dados, string $id): object
     {
-        $sql = "UPDATE " . self::TABLE . 
-            " SET nome='{$novosDados->nome}' WHERE id = '{$id}';";
+        $sql = " UPDATE " . self::TABLE . 
+            " SET nome='{$dados->nome}' WHERE id = '{$id}';";
                 
         $this->pdo->query($sql);
 
-        return $novosDados;
+        return $dados;
     }
 
     public function excluir(string $id): void

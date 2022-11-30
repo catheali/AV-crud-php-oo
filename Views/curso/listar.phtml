@@ -3,7 +3,7 @@
     <h1>Gerenciar Cursos</h1>
 
     <div class="mt-2 text-end">
-        <a href="/cursos/novo" class="btn btn-outline-primary">Gerar PDF</a>
+        <a href="/cursos/gerandopdf" class="btn btn-outline-primary">Gerar PDF</a>
 
         <a href="/cursos/novo" class="btn btn-outline-dark">Novo Curso</a>
     </div>
@@ -19,22 +19,40 @@
         </thead>
         <tbody>
             <?php
-                if(isset($cursos) && sizeOf($cursos) > 0){
-                    foreach ($cursos as $curso) {
+                    foreach ($cursos ?? [] as $curso) {
+                       $id = $curso['curso_id'];
                         echo "
                             <tr>
-                                <td>{$curso['curso_id']}</td>
+                                <td>{$id}</td>
                                 <td>{$curso['curso_nome']}</td>
                                 <td>{$curso['categoria_nome']}</td>
                                 <td>
-                                    <a href='/cursos/editar?id={$curso['curso_id']}' class='btn btn-outline-warning'>Editar</a>
-                                    <a href='/cursos/excluir?id={$curso['curso_id']}' class='btn btn-outline-danger'>Deletar</a>
-                                </td>
+                                    <a href='/cursos/editar?id={$id}' class='btn btn-outline-warning'>Editar</a>
+                                    <button type='button' class='btn btn-outline-danger btn-sm' data-bs-toggle='modal' data-bs-target='#exampleModal'> Excluir</button>
+                                    </td>
                             </tr>
                         ";
                     }
-                }
             ?>
         </tbody>
     </table>
 </section>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Deseja mesmo excluir esse curso?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" onclick="confirmar(<?php echo $id; ?>, 'curso')" class="btn btn-danger">Sim, exclua.</button>
+      </div>
+    </div>
+  </div>
+</div> 
