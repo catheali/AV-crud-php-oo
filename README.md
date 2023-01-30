@@ -71,9 +71,9 @@ Aplicação Web do tipo monolitica, criada com:
   `php config/create-admin.php`;
 
   Isso criará um usuário com as credenciais:
-      |Nome |Email |Senha|
-      | -   |  -   |  -  |
-      | Administrador | admin@admin.com | 123456 |
+ |Nome |Email |Senha|
+ | -   |  -   |  -  |
+ | Administrador | admin@admin.com | 123456 |
 
 
 ### Executando a aplicação
